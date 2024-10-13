@@ -1,0 +1,234 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: #f0c14b;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+hr {
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.onion_url {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #f0c14b;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.error-message {
+  color: #c9302c;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Onion URL DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Extracted Onion URL DOM</h1>
+        <hr>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="/enumerate/render" method="POST">
+                <label for="onion_url">Onion URL:</label>
+                <input type="text" id="onion_url" name="onion_url" placeholder="http://example.onion">
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit">Extract DOM</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button><a href="/enumerate/render/view" class="btn btn-primary">View as Page</a></button>
+                <p style="color: red;">{{ error }}</p>
+            </form>
+            <br>
+        </div>
+    </main>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Onion URL DOM</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            position: relative;
+            padding-bottom: 3rem;
+            text-align: center;
+            width: 100%;
+            background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%),
+                linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background-color: #f0c14b;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+   
+
+        hr {
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+        }
+
+        .onion_url {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary,
+        button  {
+            background-color: #f0c14b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            /* width: 100%; */
+        }
+        a{
+          text-decoration: none;
+          color: whitesmoke;
+          font-size: 16px;
+        }
+
+        .btn-primary:hover,
+        button a:hover {
+            background-color: #f4b109;
+            transform: scale(1.10);
+        }
+        button:hover{
+          background-color: #f4b109;
+            transform: scale(1.10);
+        }
+
+        .error-message {
+            color: #c9302c;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Extracted Onion URL DOM</h1>
+        <hr>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="/enumerate/render" method="POST">
+                <label for="onion_url">Onion URL:</label>
+                <input type="text" id="url" name="url" placeholder="http://example.onion" class="onion_url">
+                <button type="submit" class="btn-primary">Extract DOM</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <button><a class="xyz" href="/enumerate/render/view" class="btn btn-primary">View as Page</a></button>
+                <p class="error-message">{{ error }}</p>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

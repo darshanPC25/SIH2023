@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Tasks</title>
+</head>
+<body>
+    <style>
+    /* General styling */
+body {
+    min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1, h2 {
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="url"], input[type="datetime-local"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top:15px;
+}
+
+/* Specific styling */
+.opendir_url, .exif_url, .crypto_url {
+    width: 50%;
+}
+
+.crypto_url {
+    margin-top: 10px;
+}
+
+    </style>
+    <h1>Schedule Tasks</h1>
+    <p style="color: green;">{{ success }}</p><hr><p style="color: red;">{{ error }}</p>
+    <h2>Schedule Discover</h2>
+    <form action="/schedule" method="POST">
+        <label for="discover_url">Search Keyword:</label>
+        <input type="text" name="keywords" id="keywords" required>
+        <br><input type="text" name="task_route" id="task_route" value="/enumerate/discover" hidden><br>
+        <label for="discover_depth">Depth:</label>
+        <select id="level" name="level">
+            <option value="1">Depth level(default 1)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required><br><br>
+        <label for="discover_schedule">Schedule Date & Time:</label>
+        <input type="datetime-local" name="scheduled_time" id="scheduled_time" required>
+        <br>
+        <button type="submit">Schedule Discovery</button>
+    </form>
+
+    <h2>Validate URLs</h2>
+    <form action="/enumerate/validate" method="POST">
+        <label for="urls">URLs (separate by line):</label>
+        <textarea name="urls" id="urls" required></textarea>
+        <br>
+        <button type="submit">Validate URLs</button>
+    </form>
+
+    <h2>Extract DOM</h2>
+    <form action="/enumerate/render" method="POST">
+        <label for="extract_url">URL:</label>
+        <input type="text" name="extract_url" id="extract_url" required>
+        <br>
+        <button type="submit">Extract DOM</button>
+    </form>
+
+    <h2>Fingerprint Server</h2>
+    <form action="/enumerate/Fingerprint" method="POST">
+        <label for="fingerprint_url">URL:</label>
+        <input type="text" name="fingerprint_url" id="fingerprint_url" required>
+        <br>
+        <button type="submit">Fingerprint Server</button>
+    </form>
+
+    <h2>Check Open Directories & Common Files</h2>
+    <form action="/enumerate/check_dir" method="POST">
+        <label for="opendir_url">URL:</label>
+        <input type="text" name="opendir_url" id="opendir_url" required>
+        <br>
+        <button type="submit">Check Open Directories & Common Files</button>
+    </form>
+
+    <h2>Check EXIF Metadata</h2>
+    <form action="/enumerate/exif_metadata" method="POST">
+        <label for="exif_url">URL:</label>
+        <input type="text" name="exif_url" id="exif_url" required>
+        <br>
+        <button type="submit">Check EXIF Metadata</button>
+    </form>
+
+    <h2>Check Crypto Addresses</h2>
+    <form action="/enumerate/discover_crypto" method="POST">
+        <label for="crypto_url">URL:</label>
+        <input type="text" name="crypto_url" id="crypto_url" required>
+        <br>
+        <button type="submit">Check Crypto Addresses</button>
+    </form>
+
+</body>
+</html>

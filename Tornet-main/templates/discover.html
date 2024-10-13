@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tornet-Granted Onion Link Discovery</title>
+
+  <style>
+    
+    body {
+      min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  /* background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949; */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin: auto;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+
+    input[type="submit"] {
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    p {
+      color: red;
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    select {
+      padding: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .fa-lock {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    .wrpe{
+      display: flex;
+      flex-direction: row;
+      max-width: 800px;
+      gap: 10;
+    }
+    .temp{
+      display: inline-block;
+    }
+    .temp1{
+      margin-left: 0;
+
+    }
+    .temp3{
+      margin-right: 0;
+    }
+    .temp-mid-link{
+      max-width: 800px;
+      min-width: 800px;
+    }
+    .wrapper{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    #export_format{
+      max-width: 200px;
+      margin-left: 190px;
+      /* align-self: center; */
+    }
+    .export{
+      max-width: 120px;
+      margin-left: 230px;
+      border-radius: 2rem;
+    }
+    #keywords{
+      max-width: 500px;
+      
+    }
+    #level{
+      max-width: 509px;
+    }
+    
+  </style>
+
+
+  <style>
+    .animated-button1{
+      max-width: 200px;
+      max-height: 20px;
+      text-decoration: none;
+    }
+    .animated-button1:hover{
+      transform: scale(1.12);
+      transition: 0.3s;
+    }
+    .discoverOnion{
+      max-width: 400px;
+      border-radius: 2rem;
+    }
+    .temp1:hover{
+      color:red
+    }
+    .textToCopy:hover{
+      color: red;
+    }
+    .temp4{
+      position: absolute;
+      margin-left: 600px;
+    }
+    .temp5{
+      position: absolute;
+      border-radius: 1rem;
+      max-width: 100px;
+      margin-left: 450px;
+    }
+  </style>
+  
+</head>
+<body>
+
+    
+  <main>
+    <hr>
+    <br>
+
+    <div class="wrapper">
+      <form action="/enumerate/discover" method="post">
+        <label for="keyword" style="color: rgb(228, 222, 222);">Search Keyword:</label>
+        <input type="text" id="keywords" name="keywords" required>
+        <br>
+        <input type="text" id="api_key" name="api_key" value ="{{ api_key }}" hidden required>
+        <input type="text" id="secret_access_key" name="secret_access_key" value="{{ secret_access_key }}" hidden required>
+        <br>
+        <select id="level" name="level">
+          <option value="1">Depth level(default 1)</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <br><i style="color: whitesmoke;">Note: We made this as fast as possible, The more <b>higher value of Depth level</b> you choose <b>the longer time it will take to process</b>.</i><br>
+        <input type="submit" value="Discover Onion Links" class="discoverOnion">
+        
+         <!-- <a type="submit" class="animated-button1">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Discover 
+        </a> -->
+       
+        
+      </form>
+     
+      <hr>
+      <form action="/enumerate/discover" method="POST">
+        <label for="export_format" style="color: whitesmoke; font-weight: 900;">Export Format:</label>
+        <select id="export_format" name="export_format">
+          <option value="txt">TXT</option>
+          <option value="json">JSON</option>
+          <option value="pdf">PDF</option>
+        </select><br>
+        <input type="submit" value="Export" class="export">
+      </form>
+
+    </div>
+    <p>{{ message }}</p>
+    <p style="text-align: center;">{{ total }}</p>
+    
+    <hr>
+    <ul>
+      {% for url in urls %}
+        <li style="text-align: center;">
+          <div id="wrpe">
+    
+            <div class="temp">
+              <form action="/enumerate/render" method="POST">
+                <input class="FetchingUrlHover" style="color: rgb(16, 243, 88);" name="url" id="textToCopyRender{{ loop.index }}" value="{{ url['url'] }}" hidden/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" style="color: white;">Render</button>
+                <p style="position: absolute; margin-top: 15px; margin-left: 100px;" id="searchEngines">searchEngines</p>
+              </form>
+            </div>
+    
+            <div class="temp temp1 temp-mid-link">
+              <form action="/enumerate/details" method="POST">
+                <input class="FetchingUrlHover" style="color: rgb(16, 243, 88);" name="url" id="textToCopyDetails{{ loop.index }}" value="{{ url['url'] }}" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p style="position: absolute; margin-left: 700px; margin-top: 1px;">{{ url['status'] }} </p>
+                <button type="submit" class="temp5">Fingerprint</button>
+              </form>
+            </div>
+    
+            <div class="temp temp3">
+              <button onclick="copyText('textToCopyDetails{{ loop.index }}')">Copy Link</button>
+            </div>
+    
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <script src="../static/assets_discover/main.js"></script>
+
+    
+</body>
+</html>

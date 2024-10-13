@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tornet-Granted | Add User</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+            background: linear-gradient(90deg, rgba(44, 46, 46, 1) 100%, rgba(238, 130, 238, 1) 100%);
+            /* background: linear-gradient(90deg, rgba(50, 61, 62, 1) 7%, rgba(3, 144, 162, 1) 100%); */
+            /* background: url('../static/assets_UpdateUsers/img/img2.jpg') no-repeat center center fixed; */
+            background-size: cover;
+            color: white; 
+            min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .error {
+            color: crimson;
+        }
+
+        .success {
+            color: green;
+        }
+        .DSG{
+            color: red;
+        }
+        .go-back-btn {
+           position: absolute;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db; /* Default color */
+            color: #fff; /* Text color */
+            transition: background-color 0.3s ease;
+            justify-content: center;
+            width: 150px;
+            align-items: center;
+          
+            left: 140px;
+            margin-left: 300px;
+
+            bottom: 2px;
+            
+        }
+        .go-back-btn:hover{
+            transition: 0.8s;
+            transform: scale(1.12);
+            font-weight: 700;
+        }
+
+        /* Hover effect */
+        .go-back-btn:hover {
+            background-color: #2980b9; /* Darker color on hover */
+        }
+        .Mblock{
+            display: flex;
+            flex-direction: column
+
+        }
+       
+        @media screen and (max-width: 780px) {
+        .styleSVG {
+            max-width: 100%;
+    }
+    
+}
+form:hover{
+    transform: scale(1.10);
+    filter:  drop-shadow(0 0 10px );
+    transition: 0.3s;
+    box-shadow: 20px 14px 24px 5px rgba(135,128,135,0.83);
+}
+.submit:hover{
+    transform: scale(1.01);
+    transition: 0.2s;
+    box-shadow: 17px 18px 29px -5px rgba(72,107,85,1);
+}
+
+
+
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+    </style>
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- stylish para -->
+        <div class="DSG">         
+                <img  class="styleSVG" src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=700&width=1400&center=true&lines=TOR+enables+individuals+to+access+the+internet+without+revealing+their+identity;It's+a+tool+for+privacy+in+an+age+of+surveillance." alt="Typing SVG" >
+       </div>
+       <div class="Mblock">
+        <div >
+            <form action="/add_user" method="post">
+            
+                <h1>Add New User</h1>
+                <label for="username" style="font-weight: 900;">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password" style="font-weight: 900;">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button class="glow-on-hover" type="submt">Update Password</button>
+                <p class="error">{{ error }}</p>
+                <p class="success">{{ success }}</p>
+            </form>
+            <button class="go-back-btn"  onclick="goBack()">Go Back</button>
+        </div>
+
+        
+
+
+       </div>
+        
+
+    </div>
+
+    <!-- go back by -1 -->
+    <script>
+        function goBack() {
+            window.history.go(-1);
+        }
+    </script>
+    
+</body>
+</html>

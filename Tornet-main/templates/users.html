@@ -1,0 +1,357 @@
+<!-- <style>
+  body {
+    background-color: #f8f8f8;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .admin-heading {
+    background: linear-gradient(to right, #343a40, #1c1f23); /* Gradient background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease; /* Smooth transition on background change */
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+
+  .admin-heading:hover {
+    background: linear-gradient(to right, #1c1f23, #343a40); /* Change gradient on hover */
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  .admin-table {
+    margin-top: 20px;
+    overflow-x: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+
+  th, td {
+    padding: 15px;
+    border: 1px solid #ccc;
+    text-align: left;
+    transition: background-color 0.3s ease;
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+  }
+
+  tr:hover td {
+    background-color: #f9f9f9;
+  }
+
+  .admin-buttons {
+    margin-top: 20px;
+    text-align: center;
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  /* Button Styles */
+  .admin-buttons a {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 15px 30px;
+    background-color: #EC6244;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    transform: perspective(1px) translateZ(0); /* 3D effect */
+  }
+
+  button:hover {
+    background-color: #D14C2C;
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+  }
+
+  /* Responsive Styles */
+  @media only screen and (max-width: 768px) {
+    th, td {
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+    }
+    
+    </style>
+
+{% block content %}
+<div class="admin-table">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>USERNAME</th>
+        <th>PASSWORD (SHA-256)</th>
+        <th>API_KEY</th>
+        <th>SECRET_ACCESS_KEY</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+         
+          <td>{{ user.username }}</td>
+          <td  {{ user.password }}</td>
+          <td>{{ user.api_key }}</td>
+          <td>{{ user.secret_access_key }}</td>
+          <td>
+            <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+      <div class="admin-buttons">
+        <a href="/add_user"><button>Add User</button></a>&nbsp;
+        <a href="/update_password"><button>update Password</button></a>&nbsp;
+        <a href="/dashboard"><button>Back to Dashboard</button></a>
+      </div>
+    {% endblock %} -->
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Title</title>
+  <style>
+    body {
+      background-color: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      position: relative;
+      padding-bottom: 3rem;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 100%;
+      background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%),
+                  linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .admin-heading {
+      background: linear-gradient(to right, #343a40, #1c1f23);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+      transform: perspective(1px) translateZ(0);
+    }
+
+    .admin-heading:hover {
+      background: linear-gradient(to right, #1c1f23, #343a40);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .admin-table {
+      margin-top: 20px;
+      overflow-x: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      transform: perspective(1px) translateZ(0);
+    }
+
+    th, td {
+      padding: 15px;
+      border: 1px solid #ccc;
+      text-align: left;
+      transition: background-color 0.3s ease;
+      transform: perspective(1px) translateZ(0);
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: 600;
+    }
+
+    tr:hover td {
+      background-color: #f9f9f9;
+    }
+
+    .admin-buttons {
+      margin-top: 20px;
+      text-align: center;
+      transform: perspective(1px) translateZ(0);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .admin-buttons a {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 15px 30px;
+      background-color: #EC6244;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      transform: perspective(1px) translateZ(0);
+    }
+
+    button:hover {
+      background-color: #D14C2C;
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @media only screen and (max-width: 768px) {
+      th, td {
+        padding: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+      }
+    }
+
+
+    
+    .maxbutton {
+  position: relative !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  width: 160px !important;
+  height: 50px !important;
+  border: 2px solid #010101 !important;
+  border-radius: 4px 4px 4px 4px !important;
+  background-color: #ef1717 !important;
+  box-shadow: 0px 0px 2px 0px #ed1515 !important;
+}
+.maxbutton:hover {
+  border-color: #933e24 !important;
+  background-color: white !important;
+  box-shadow: 0px 0px 2px 0px #333333 !important;
+}
+.maxbutton .mb-text {
+  color: #cecece !important;
+  font-family: Tahoma !important;
+  font-size: 15px !important;
+  text-align: center !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  line-height: 1em !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  background-color: unset !important;
+  position: relative !important;
+  padding: 18px 0px 0px 0px !important;
+}
+.maxbutton:hover .mb-text {
+  color: #f21000 !important;
+}
+  </style>
+</head>
+<body>
+  <div class="admin-heading">
+    <h1>Your Admin Page</h1>
+  </div>
+
+  <div class="admin-table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>USERNAME</th>
+          <th>PASSWORD (SHA-256)</th>
+          <th>API_KEY</th>
+          <th>SECRET_ACCESS_KEY</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td style="font-size: 10px;">{{ user.password }}</td>
+            <td style="font-size: 10px;">{{ user.api_key }}</td>
+            <td style="font-size: 10px;">{{ user.secret_access_key }}</td>
+            <td>
+              <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post">
+                <input type="submit" value="Delete" class="maxbutton">
+
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="admin-buttons">
+    <a href="/add_user"><button>Add User</button></a>&nbsp;
+    <a href="/update_password"><button>Update Password</button></a>&nbsp;
+    <a href="/dashboard"><button>Back to Dashboard</button></a>
+  </div>
+</body>
+</html>

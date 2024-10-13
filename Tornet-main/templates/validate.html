@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Onion URLs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+  background-color: #1b2024;
+  color: #e1e8ed;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  padding-bottom: 3rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+ 
+  background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+section {
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #22272b;
+}
+
+section h2 {
+  font-size: 1.5em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.file-upload input[type="file"] {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #26292c;
+  color: #adb5bd;
+}
+
+.file-upload input[type="submit"] {
+  display: block;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #26292c;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.messages p {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.messages .success {
+  color: #4db53c;
+}
+
+.messages .error {
+  color: #e63946;
+}
+
+.single-url-validation input[type="text"] {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #26292c;
+  color: #adb5bd;
+  width: 100%;
+}
+
+.single-url-validation button {
+  display: block;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;y 
+  /* background-color: #26292c; */
+  background-color: purple;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.single-url-validation code {
+  font-family: monospace;
+  background-color: #26292c;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.single-url-validation .error {
+  color: #e63946;
+}
+
+hr {
+  border-color: #26292c;
+  margin: 20px 0;
+}
+
+.validation-results table {
+  border-color: #26292c;
+}
+
+.validation-results table th,
+.validation-results table td {
+  padding: 5px;
+}
+
+.validation-results .text-success {
+  color: #4db53c;
+}
+
+.validation-results .text-danger {
+  color: #e63946;
+}
+
+.validation-results a {
+  display: block;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #26292c;
+  color: #adb5bd;
+  cursor: pointer;
+}
+.wrapper{
+  display: inline-block;
+  width: 1200px;
+
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+</style>
+<body style="background-color: #17191c; color: #adb5bd; text-align: center;">
+    <header>
+        <h1 style="color: #dfecf0;">Validate Onion URLs</h1>
+    </header>
+
+    <div class="wrapper">
+
+        <div class="container">
+          <div>
+            <section class="file-upload">
+            <h2>Upload .txt file containing URLs</h2>
+            <form action="/validate_file" method="POST" enctype="multipart/form-data">
+                <label for="file" style="color: #adb5bd;">Select file:</label>
+                <input type="file" name="file" id="file" accept=".txt">
+                <br>
+                <input type="submit" value="Upload" style="background-color: #26292c; color: #adb5bd;">
+            </form>
+        </section>
+        <section class="messages">
+          <p style="color: #4db53c;">{{ success }}</p>
+          <p style="color: #e63946;">{{ error }}</p>
+        </section>
+          </div>
+
+          <div>
+            <section class="single-url-validation">
+            <h2>Validate Single Onion URL</h2>
+            <form action="/enumerate/validate" method="POST">
+                <label for="url" style="color: #adb5bd;">Enter Onion URL:</label>
+                <input type="text" name="url" id="url" placeholder="https://example.onion">
+                <button type="submit" style="background-color: #26292c; color: #adb5bd;">Decode</button>
+            </form>
+            <br>
+            {% if url %}
+                <h3>Results for ->&nbsp;
+                    <code style="color: #52c41a; font-size: 20px;">{{ url }}</code>
+                </h3>
+                {% if headers %}
+                    <pre class="code" style="background-color: #26292c; color: #adb5bd;">
+                        {% for key, value in headers.items() %}
+                            {{ key }}<br><br> {{ value }}
+                        {% endfor %}
+                    </pre>
+                {% else %}
+                    <p class="error" style="color: #e63946;">Error retrieving headers for {{ url }}</p>
+                {% endif %}
+            {% endif %}
+        </section>
+        <br>
+          </div>
+        </div>
+         
+
+
+          <div>     
+            <hr style="border-color: #26292c;">
+            <section class="validation-results">
+                <h2>Bulk Validation Results</h2>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <p style="color: #adb5bd;">Active URLs: {{ active_urls }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p style="color: #adb5bd;">Dead URLs: {{ dead_urls }}</p>
+                    </div>
+                </div>
+                <form action="/enumerate/validate" method="POST">
+                    <label for="export_format">Export Format:</label>
+                    <select id="export_format" name="export_format">
+                      <option value="txt">TXT</option>
+                      <option value="json">JSON</option>
+                      <option value="pdf">PDF</option>
+                    </select><br>
+                    <input type="submit" value="Export">
+                  </form>
+                <table class="table table-bordered table-striped" style="color: #adb5bd; background-color: #26292c;">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Status</th>
+                            <th>Response</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for url in all_urls %}
+                            <tr>
+                                <td>{{ url["url"] }}</td>
+                                <td {% if url["status"] == "Active" %}class="text-success"{% elif url["status"] == "Dead" %}class="text-danger"{% endif %}><b>{{ url["status"] }}</b></td>
+                                <td>{{ url["response"] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <a href="/validate_file" class="btn btn-primary" style="background-color: #26292c; color: #adb5bd;">Back to Upload</a>
+                <a href="/dashboard" class="btn btn-primary" style="background-color: #26292c; color: #adb5bd;">Back to Dashboard</a>
+            </section>
+          </div>
+
+    </div>
+    
+        
+        
+       
+   
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="../static/assets_Dashboard/assets/css/styles.css">
+        
+        
+        
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets_Dashboard/css/styles.css') }}">
+        <link rel="icon" href="../static/assets_Dashboard/assets/img/sihlogoTtile.png">
+        
+        <title>Dashboard</title>
+
+    
+
+        <!-- Add this line to include the Ionic CDN -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-4+FEDF8p5q8NYhlVsN7bzvI3nFdQFtw1TfG2O+WcFP0=" crossorigin="anonymous">
+        
+    </head>
+    <body >
+        <!-- =======================starts from here========================== -->
+       <div class="wrapper">
+        <div class="header" id="header">
+            <!-- NTRO logo -->
+                    <nav class="nav">
+                        <img class="ntroLogo" src="../static/assets_Dashboard/assets/img/logo.svg">
+                        <a href="/dashboard" class="nav__logo"></a>
+        
+                        <div class="nav__menu" id="nav-menu">
+                            <ul class="nav__list">
+                                        <li class="styleAtNav"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=700&width=1100&center=true&lines=Welcome+To+Tornet+Granted;Empowering +privacy +and +free+ access+ to +information;Welcome+ to+ our+ secure +space +on +the+ Tor+ network. " alt="Typing SVG"></li>
+                                <li class="nav__item">
+                                    <a href="#home" class="nav__link active-link">
+                                        <i class='bx bx-home-alt nav__icon'></i>
+                                        <span class="nav__name">Documentation</span>
+                                    </a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="#contactme" class="nav__link">
+                                        <i class='bx bx-message-square-detail nav__icon'></i>
+                                        <span class="nav__name">AboutUs</span>
+                                    </a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="/logout">
+                                        <div class="lgot">Logout</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+        
+                        <img src="assets_Dashboard/img/perfil.png" alt="" class="nav__img">
+
+                    </nav>
+        </div>
+
+            <div class="container">
+                <div>
+                    <div>
+                        <h2 class="section__title anim">Tornet-Granted Dashboard</h2>
+                    </div>
+                </div>
+
+                <div class="gallery">
+
+                    <figure class="card">
+                        <h2>Users Management Portal</h2>
+                       
+                          <a href="/users" class="animated-button1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Click
+                          </a> 
+                        <figcaption>
+                            The Users Management Portal streamlines account control, simplifies permissions, and enhances security for efficient user administration</figcaption>
+                    </figure>
+        
+                    <figure class="card">
+                        <h2>Discover Onion Addresses</h2>
+              
+                          <a href="/enumerate/discover" class="animated-button1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Click
+                          </a>
+                        <figcaption>
+                            The portal enables users to explore and access hidden services on the Tor network securely and anonymously.</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <h2>Validate The Onion  Addresses</h2>
+                        <a href="/enumerate/validate" class="animated-button1">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Click
+                        </a>
+                        <figcaption>Verify the legitimacy of .onion addresses to ensure a secure and anonymous browsing experience on the Tor network, catering to users prioritizing privacy and confidentiality3</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <h2> HTML Demos with .onion URLs</h2>
+                        
+                          <a href="/enumerate/render"class="animated-button1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Click 
+                          </a>
+                        <figcaption>Effortlessly generate HTML demo folders showcasing .onion URLs with our Onion Demo Generator—an intuitive tool for exploring secure and private browsing on the Tor network</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <h2>Task Time Manager:</h2>
+                        
+                          <a href="/schedule" class="animated-button1">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Click 
+                          </a>
+                        <figcaption>Manage tasks effectively, optimize your workflow, and enhance overall productivity</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <h2>Task Time Manager:</h2>
+                        <a href="/schedule" class="animated-button1">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Click
+                        </a>
+                        <figcaption >Manage tasks effectively, optimize your workflow, and enhance overall productivity</figcaption>
+                    </figure>
+        
+                </div>
+        
+        
+        
+        
+            </div>
+        
+        
+        
+         </div>
+    </div>
+
+   
+
+
+       
+
+
+
+       </div>
+
+
+
+            <!--<footer>
+                <hr>
+                <p class="copyright">Cosas Learning Ⓒ 2022 - All Rights Reserved</p>
+                 </footer>  -->
+
+        <!--=============== MAIN JS hai ===============-->
+        <script src="../static/assets_Dashboard/js/main.js"></script>
+        <script src="{{ url_for('static', filename='assets_Dashboard/js/main.js') }}"></script>
+        <script src="https://kit.fontawesome.com/a15a706d7f.js" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    </body>
+
+</html>
+
+ <!-- <h2 class="section__title anim  fs-1 fw-bolder text-white text-center" style="font-weight: 900;">Tornet-Granted Dashboard</h2> -->
